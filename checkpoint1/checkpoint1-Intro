@@ -1,0 +1,9 @@
+For each of these skills, write pseudo-code (like the post = Post.all.first example above) to demonstrate how your application might perform these tasks through an ORM. For each code sample, also write a corresponding SQL statement. Send the code samples and SQL statements in the submission tab.
+
+remove duplicates in a query response
+filter records using inequalities, pattern matching, ranges, and boolean logic
+sort records in a particular order
+limit the number of records returned
+group records into sections
+perform calculations using aggregate functions
+join tables using cross join, inner join, and outer join
