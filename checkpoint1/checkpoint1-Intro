@@ -1,9 +1,42 @@
 For each of these skills, write pseudo-code (like the post = Post.all.first example above) to demonstrate how your application might perform these tasks through an ORM. For each code sample, also write a corresponding SQL statement. Send the code samples and SQL statements in the submission tab.
 
 remove duplicates in a query response
+
+	user.email.all.unique
+	SELECT DISTINCT email FROM user;
+
 filter records using inequalities, pattern matching, ranges, and boolean logic
+
+	post.title.where(title = 'A%s', id = (1,2,3,4,5,6,8,9,10))
+	SELECT title FROM post WHERE title LIKE 'A%' AND id BETWEEN 1 AND 10 AND id <> 7;
+
 sort records in a particular order
+
+	user.order(name)	
+	SELECT name FROM user ORDER BY name;
+
 limit the number of records returned
+
+	comment.body.where(id = 1).limit(10)
+	SELECT body FROM comment WHERE user_id = 1 LIMIT 10;
+
 group records into sections
+	
+	post.select(title, user_id).group(user_id)
+	SELECT title, user_id FROM post GROUP BY user_id;
+
 perform calculations using aggregate functions
+
+	post.select(id_count, user_id).group(user_id).order(id_count :desc)
+	SELECT COUNT(id), user_id FROM post GROUP BY user_id ORDER BY COUNT(id) DESC;
+
 join tables using cross join, inner join, and outer join
+
+	post.cross_join(omment)
+	SELECT * FROM post CROSS JOIN comment;
+
+	post.join(comment)
+	SELECT * FROM post INNER JOIN comment ON post.id = comment.post_id;
+
+	post.full_outer_join(comment)
+	SELECT * FROM post FULL OUTER JOIN comment ON post.id = comment.post_id;
